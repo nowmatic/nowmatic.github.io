@@ -26,6 +26,11 @@ div.image {
   height: 100vh;
 }
 
+.highlight {
+  background: #FFD7B5;
+  font-style: italic;
+}
+
 section, header {
   height: 100vh;
   overflow: hidden;
@@ -116,6 +121,8 @@ section .subtitle {
 
 .how-it-works p {
   color: #828282;
+  font-size: 20px;
+  font-weight: lighter;
 }
 
 footer {
