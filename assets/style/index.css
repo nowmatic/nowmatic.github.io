@@ -67,6 +67,7 @@ section, header {
 .waitlist-form label {
   display: block;
   margin: 20px 0;
+  font-weight: lighter;
 }
 
 .waitlist-form .row {
@@ -94,7 +95,7 @@ section, header {
 
 .waitlist-form .bottom-line {
   margin-top: 20px;
-  /* font-weight: lighter; */
+  font-weight: lighter;
   color: #828282;
 }
 
