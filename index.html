@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="pt">
+
 <head>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177927555-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-177927555-1');
@@ -17,6 +18,7 @@
   <title>Nowmatic</title>
   <link rel="stylesheet" href="assets/style/index.css">
 </head>
+
 <body>
   <main>
     <header>
@@ -24,21 +26,23 @@
         <div class="content col">
           <h4 class="brand">Brand</h4>
           <h1 class="title">Trabalhando no Brasil para empresas dos EUA?</h1>
-          <h3 class="subtitle">Nowmatic é a forma mais rápida, barata e segura para você receber seu pagamento de empresas americanas.</h3>
+          <h3 class="subtitle">Nowmatic é a forma mais rápida, barata e segura para você receber seu pagamento de
+            empresas americanas.</h3>
 
           <form class="waitlist-form" action="">
             <label for="email">
-              Quer acompanhar de perto nosso desenvolvimento e de quebra ganhar transferências com <strong class="highlight">taxas zero</strong> por <strong class="highlight">um ano</strong>?
+              Quer acompanhar de perto nosso desenvolvimento e de quebra ganhar transferências com <strong
+                class="highlight">taxas zero</strong> por <strong class="highlight">um ano</strong>?
             </label>
             <div class="row">
               <div class="col">
-                <input name="email" type="email" placeholder="Informe seu e-mail">
+                <input id="input-email" name="email" type="email" placeholder="Informe seu e-mail">
               </div>
               <div class="col">
-                <button type="submit">Entre na lista de espera</button>
+                <button id="submit" type="submit">Entre na lista de espera</button>
               </div>
             </div>
-            <p class="bottom-line">Oferta por tempo limitado</p>
+            <p id="output" class="bottom-line text-grey">Oferta por tempo limitado</p>
           </form>
         </div>
         <div class="col">
@@ -54,7 +58,8 @@
         </div>
         <div class="content col">
           <h1 class="title">O mais <strong class="highlight">barato</strong>, garantimos!</h1>
-          <p class="subtitle">Se você encontrar uma maneira mais barata para receber seus pagamentos do exterior, devolvemos a diferença e ainda creditamos R$ 25 reais em sua conta.</p>
+          <p class="subtitle">Se você encontrar uma maneira mais barata para receber seus pagamentos do exterior,
+            devolvemos a diferença e ainda creditamos R$ 25 reais em sua conta.</p>
         </div>
       </div>
     </section>
@@ -85,10 +90,13 @@
 
     <section class="how-it-works">
       <h1 class="title">Um novo jeito de receber seus <strong class="highlight">pagamentos</strong>.</h1>
-      <p>Nós não usamos o serviço tradicional de redes bancárias. Com a Nowmatic, você recebe seus pagamentos de forma segura, mais barata e em apenas alguns segundos.</p>
+      <p>Nós não usamos o serviço tradicional de redes bancárias. Com a Nowmatic, você recebe seus pagamentos de forma
+        segura, mais barata e em apenas alguns segundos.</p>
       <p>
-        Nós buscamos tornar a sua experiência com transações internacionais descomplicada, fazendo com que você possa economizar não só dinheiro, mas também tempo.
-        É por isso que construímos nossa plataforma através da avançada tecnologia do Blockchain, garantindo um serviço totalmente seguro e regulamentado.
+        Nós buscamos tornar a sua experiência com transações internacionais descomplicada, fazendo com que você possa
+        economizar não só dinheiro, mas também tempo.
+        É por isso que construímos nossa plataforma através da avançada tecnologia do Blockchain, garantindo um serviço
+        totalmente seguro e regulamentado.
       </p>
     </section>
 
@@ -96,5 +104,32 @@
       <small>Copyright © 2020, Nowmatic</small>
     </footer>
   </main>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    (function () {
+      const ZAPIER_HOOK_URL = 'https://hooks.zapier.com/hooks/catch/3286889/ow3eqxg/';
+      const SUCCESS_MSG = 'Sucesso! Obrigado por fazer parte da nowmatic!';
+      const ERROR_MSG = 'Ocorreu um erro, por favor tente novamente em instantes.';
+
+      const output = document.getElementById('output');
+
+      document.getElementById('submit').onclick = function () {
+        event.preventDefault();
+
+        const email = document.getElementById('input-email').value;
+
+        axios.post(ZAPIER_HOOK_URL, JSON.stringify({ email: email }))
+          .then(function (res) {
+            output.className = 'bottom-line text-success';
+            output.innerHTML = SUCCESS_MSG;
+          })
+          .catch(function (err) {
+            output.className = 'bottom-line text-error';
+            output.innerHTML = ERROR_MSG;
+          });
+      };
+    })();
+  </script>
 </body>
+
 </html>

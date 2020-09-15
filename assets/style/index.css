@@ -96,7 +96,6 @@ section, header {
 .waitlist-form .bottom-line {
   margin-top: 20px;
   font-weight: lighter;
-  color: #828282;
 }
 
 section .title {
@@ -147,6 +146,19 @@ header .image {
 .security .image {
   background-image: url('../images/header.jpeg');
 }
+
+.text-grey {
+  color: #828282;
+}
+
+.text-success {
+  color: #1abd00;
+}
+
+.text-error {
+  color: #fb000d;
+}
+
 
 @media (max-width: 930px) {
   .row {
