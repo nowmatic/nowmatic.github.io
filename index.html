@@ -23,84 +23,42 @@
   <main>
     <header>
       <div class="row fill-screen-height">
-        <div class="content col">
-          <h4 class="brand">Brand</h4>
-          <h1 class="title">Trabalhando no Brasil para empresas dos EUA?</h1>
-          <h3 class="subtitle">Nowmatic é a forma mais rápida, barata e segura para você receber seu pagamento de
-            empresas americanas.</h3>
-
-          <form class="waitlist-form" action="">
-            <label for="email">
-              Quer acompanhar de perto nosso desenvolvimento e de quebra ganhar transferências com <strong
-                class="highlight">taxas zero</strong> por <strong class="highlight">um ano</strong>?
-            </label>
-            <div class="row">
-              <div class="col">
-                <input id="input-email" name="email" type="email" placeholder="Informe seu e-mail">
-              </div>
-              <div class="col">
-                <button id="submit" type="submit">Entre na lista de espera</button>
-              </div>
-            </div>
-            <p id="output" class="bottom-line text-grey">Oferta por tempo limitado</p>
-          </form>
-        </div>
         <div class="col">
-          <div class="image header"></div>
+          <div class="content">
+            <h4 class="brand">Brand</h4>
+            <h1 class="title">Trabalhando para empresas americanas?</h1>
+            <h2 class="subtitle">
+              Estamos desenvolvendo uma plataforma que pode mudar a maneira como você recebe seus pagamentos do exterior.
+            </h2>
+
+            <form class="waitlist-form" action="">
+              <label for="email">
+                Quer acompanhar o desenvolvimento de nossa aplicação BETA e de quebra receber seus pagamentos
+                <strong class="highlight">sem taxas por um ano?</strong>
+              </label>
+              <div class="row">
+                <div class="col">
+                  <input id="input-email" name="email" type="email" placeholder="Informe seu e-mail">
+                </div>
+                <div class="col">
+                  <button id="submit" type="submit">Entre na lista de espera</button>
+                </div>
+              </div>
+              <p id="output" class="bottom-line text-grey">Oferta por tempo limitado</p>
+            </form>
+          </div>
+        </div>
+        <div class="col carrousel">
+            <div class="image first active"></div>
+            <div class="image second"></div>
+            <div class="image third"></div>
+            <div class="image fourth"></div>
         </div>
       </div>
     </header>
 
-    <section class="least-expensive">
-      <div class="row">
-        <div class="col">
-          <div class="image"></div>
-        </div>
-        <div class="content col">
-          <h1 class="title">O mais <strong class="highlight">barato</strong>, garantimos!</h1>
-          <p class="subtitle">Se você encontrar uma maneira mais barata para receber seus pagamentos do exterior,
-            devolvemos a diferença e ainda creditamos R$ 25 reais em sua conta.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="fastest">
-      <div class="row">
-        <div class="content col">
-          <h1 class="title">Somos os mais <strong class="highlight">rápidos</strong>!</h1>
-          <p class="subtitle">Receba seu pagamento do exterior em segundos a qualquer hora do dia.</p>
-        </div>
-        <div class="col">
-          <div class="image"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="security">
-      <div class="row">
-        <div class="col">
-          <div class="image"></div>
-        </div>
-        <div class="content col">
-          <h1 class="title">Você recebe seu pagamento de forma <strong class="highlight">100% segura</strong>.</h1>
-          <p class="subtitle">Garantimos a total segurança nas suas transações.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="how-it-works">
-      <h1 class="title">Um novo jeito de receber seus <strong class="highlight">pagamentos</strong>.</h1>
-      <p>Nós não usamos o serviço tradicional de redes bancárias. Com a Nowmatic, você recebe seus pagamentos de forma
-        segura, mais barata e em apenas alguns segundos.</p>
-      <p>
-        Nós buscamos tornar a sua experiência com transações internacionais descomplicada, fazendo com que você possa
-        economizar não só dinheiro, mas também tempo.
-        É por isso que construímos nossa plataforma através da avançada tecnologia do Blockchain, garantindo um serviço
-        totalmente seguro e regulamentado.
-      </p>
-    </section>
-
     <footer>
+      <p>Feito com amor no Brasil <img class="icon" src="assets/images/brazil.png" alt="Brasil"> e nos EUA <img class="icon" src="assets/images/usa.png" alt="EUA"></p>
       <small>Copyright © 2020, Nowmatic</small>
     </footer>
   </main>
@@ -128,6 +86,22 @@
             output.innerHTML = ERROR_MSG;
           });
       };
+    })();
+
+    (function () {
+      const carrousel = document.getElementsByClassName('.carrousel')[0];
+      const carrouselImages = document.querySelectorAll('.carrousel .image');
+      let activeIndex = 0;
+
+      const activeNextItem = () => {
+        carrouselImages[activeIndex] && carrouselImages[activeIndex].classList.remove('active');
+
+        activeIndex = activeIndex === carrouselImages.length - 1 ? 0 : activeIndex + 1;
+
+        carrouselImages[activeIndex].classList.add('active');
+      }
+
+      setInterval(activeNextItem, 5000);
     })();
   </script>
 </body>
