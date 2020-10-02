@@ -113,6 +113,13 @@ header {
   font-weight: lighter;
 }
 
+.waitlist-form .disclaimer {
+  background-color: #FFD7B5;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
 footer {
   display: flex;
   flex-direction: column;
